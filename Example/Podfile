@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'AMResizingTextView_Example', :exclusive => true do
+  pod "AMResizingTextView", :path => "../"
+end
+
+target 'AMResizingTextView_Tests', :exclusive => true do
+  pod "AMResizingTextView", :path => "../"
+
+  
+end
