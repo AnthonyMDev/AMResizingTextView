@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		9234E3D41BE1B8E7001F0EE5 /* ResizingTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9234E3D31BE1B8E7001F0EE5 /* ResizingTextViewTests.swift */; };
 		D431AFC0191EFEE986E1CC52 /* Pods_AMResizingTextView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8585F2F30BF6C0485EDD80F /* Pods_AMResizingTextView_Tests.framework */; };
 		DCCABD4B88F459C33DB48783 /* Pods_AMResizingTextView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BD12C14006D89C586B8C8F /* Pods_AMResizingTextView_Example.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		607FACE51AFB9204008FA782 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = AMResizingTextView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		9234E3D31BE1B8E7001F0EE5 /* ResizingTextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizingTextViewTests.swift; sourceTree = "<group>"; };
 		94261E27B9768319FDE9F7CE /* Pods-AMResizingTextView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMResizingTextView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMResizingTextView_Tests/Pods-AMResizingTextView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8585F2F30BF6C0485EDD80F /* Pods_AMResizingTextView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMResizingTextView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFA753B80CA0E9A3AE135AE /* AMResizingTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AMResizingTextView.podspec; path = ../AMResizingTextView.podspec; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				9234E3D31BE1B8E7001F0EE5 /* ResizingTextViewTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -367,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9234E3D41BE1B8E7001F0EE5 /* ResizingTextViewTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

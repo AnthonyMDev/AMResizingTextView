@@ -8,5 +8,6 @@ end
 target 'AMResizingTextView_Tests', :exclusive => true do
   pod "AMResizingTextView", :path => "../"
 
+  pod 'Nimble', '~> 3.0'
   
 end

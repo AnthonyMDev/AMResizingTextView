@@ -1,0 +1,17 @@
+PODS:
+  - AMResizingTextView (0.1.0)
+  - Nimble (3.0.0)
+
+DEPENDENCIES:
+  - AMResizingTextView (from `../`)
+  - Nimble (~> 3.0)
+
+EXTERNAL SOURCES:
+  AMResizingTextView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AMResizingTextView: c88313311a896c1b3b2c7a5e4886aa8ba4b74129
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+
+COCOAPODS: 0.39.0
