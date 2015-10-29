@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
   s.homepage         = "https://github.com/AnthonyMDev/AMResizingTextView"
   s.license          = 'MIT'
-  s.author           = { "Anthony Miller" => "anthony@app-order.com" }
+  s.author           = { "Anthony Miller" => "AnthonyMDev@gmail.com" }
   s.source           = { :git => "https://github.com/AnthonyMDev/AMResizingTextView.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/AnthonyMDev'
 
