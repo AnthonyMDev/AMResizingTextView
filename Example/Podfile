@@ -1,13 +1,13 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-abstract_target 'AMResizingTextView_Abstract_Target'
+abstract_target 'AMResizingTextView_Abstract_Target' do
     pod "AMResizingTextView", :path => "../"
 
     target 'AMResizingTextView_Example' do
     end
 
     target 'AMResizingTextView_Tests' do
-        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :branch => 'swift-3.0'
+        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :commit => '4b539a2'
   end
 end

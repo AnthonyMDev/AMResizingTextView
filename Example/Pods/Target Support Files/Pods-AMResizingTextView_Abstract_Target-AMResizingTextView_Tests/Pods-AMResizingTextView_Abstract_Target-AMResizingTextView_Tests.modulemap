@@ -1,0 +1,6 @@
+framework module Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Tests {
+  umbrella header "Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
