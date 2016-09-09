@@ -8,6 +8,6 @@ abstract_target 'AMResizingTextView_Abstract_Target' do
     end
 
     target 'AMResizingTextView_Tests' do
-        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :commit => '4b539a2'
-  end
+        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :branch => 'swift-3.0'
+    end
 end
