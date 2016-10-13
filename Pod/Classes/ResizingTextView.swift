@@ -10,15 +10,23 @@ open class ResizingTextView: UITextView {
      */
     
     /// The duration of the animation while resizing the text view in seconds. Defaults to `0.1`.
-    var resizeDuration: TimeInterval = 0.1
+    public var resizeDuration: TimeInterval = 0.1
     
-    fileprivate var heightConstraint: NSLayoutConstraint!
+    private var heightConstraint: NSLayoutConstraint!
+    
+    /// This closure will be called before the text view's `height` is changed.
+    /// The parameter is the height that the text view will be updated to as a `CGFloat`.
+    public var willChangeHeight: ((CGFloat) -> Void)?
+    
+    /// This closure will be called after the text view's `height` is changed.
+    /// The parameter is the height that the text view was updated to as a `CGFloat`.
+    public var didChangeHeight: ((CGFloat) -> Void)?
     
     /*
      *  MARK: - Object Lifecycle
      */
     
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         
         commonInit()
@@ -30,18 +38,18 @@ open class ResizingTextView: UITextView {
         commonInit()
     }
     
-    fileprivate func commonInit() {
+    private func commonInit() {
         attachHeightConstraint()
         registerForTextChangeNotification()
     }
     
-    fileprivate func attachHeightConstraint() {
+    private func attachHeightConstraint() {
         if !findHeightConstraint() {
             createHeightConstraint()
         }
     }
     
-    fileprivate func findHeightConstraint() -> Bool {
+    private func findHeightConstraint() -> Bool {
         for constraint in constraints {
             if constraint.firstAttribute == .height {
                 heightConstraint = constraint
@@ -51,7 +59,7 @@ open class ResizingTextView: UITextView {
         return false
     }
     
-    fileprivate func createHeightConstraint() {
+    private func createHeightConstraint() {
         heightConstraint = NSLayoutConstraint(item: self,
                                               attribute: .height,
                                               relatedBy: .equal,
@@ -63,11 +71,11 @@ open class ResizingTextView: UITextView {
         addConstraint(heightConstraint)
     }
     
-    fileprivate func heightForCurrentText() -> CGFloat {
+    private func heightForCurrentText() -> CGFloat {
         return sizeThatFits(self.frame.size).height
     }
     
-    fileprivate func registerForTextChangeNotification() {
+    private func registerForTextChangeNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ResizingTextView.didUpdateText(_:)),
                                                name: NSNotification.Name.UITextViewTextDidChange,
@@ -89,7 +97,8 @@ open class ResizingTextView: UITextView {
         }
     }
     
-    fileprivate func updateHeightConstraint(_ newHeight: CGFloat) {
+    private func updateHeightConstraint(_ newHeight: CGFloat) {
+        willChangeHeight?(newHeight)
         heightConstraint.constant = newHeight
         setNeedsLayout()
         
@@ -97,7 +106,9 @@ open class ResizingTextView: UITextView {
                        delay: 0,
                        options: .layoutSubviews,
                        animations: { self.layoutIfNeeded() },
-                       completion: nil)
+                       completion: { [weak self] _ in
+                        self?.didChangeHeight?(newHeight)
+            })
     }
     
 }
