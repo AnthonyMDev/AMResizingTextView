@@ -90,7 +90,7 @@ open class ResizingTextView: UITextView {
      *  MARK: - Auto Resizing
      */
     
-    func didUpdateText(_ sender: AnyObject) {
+    @objc func didUpdateText(_ sender: AnyObject) {
         let newHeight = heightForCurrentText()
         if newHeight != heightConstraint.constant {
             updateHeightConstraint(newHeight)

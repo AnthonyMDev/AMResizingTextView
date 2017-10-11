@@ -1,27 +1,19 @@
 PODS:
-  - AMResizingTextView (0.1.0)
-  - Nimble (5.0.0-alpha.30p1)
+  - AMResizingTextView (1.0.0)
+  - Nimble (7.0.2)
 
 DEPENDENCIES:
   - AMResizingTextView (from `../`)
-  - Nimble (from `https://github.com/Quick/Nimble`, branch `swift-3.0`)
+  - Nimble (~> 7.0)
 
 EXTERNAL SOURCES:
   AMResizingTextView:
-    :path: "../"
-  Nimble:
-    :branch: swift-3.0
-    :git: https://github.com/Quick/Nimble
-
-CHECKOUT OPTIONS:
-  Nimble:
-    :commit: 220152be528dcc0537764c179c95b8174028c80c
-    :git: https://github.com/Quick/Nimble
+    :path: ../
 
 SPEC CHECKSUMS:
-  AMResizingTextView: e404e9e37759ead1fe8d7c1ead70383554c402d8
-  Nimble: c5b995b4cd57789ec44b0cfb79640fc00e61a8c7
+  AMResizingTextView: 42e4387d677547bc396bb454ee91ae45cfcd1927
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
 
-PODFILE CHECKSUM: 99dd35b0c2d82044b664d1d1aca7bdc96c22ba53
+PODFILE CHECKSUM: 454a7d14775c781a989064200c5ed35f0418ffd1
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.3.0
