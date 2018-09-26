@@ -78,7 +78,7 @@ open class ResizingTextView: UITextView {
     private func registerForTextChangeNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ResizingTextView.didUpdateText(_:)),
-                                               name: NSNotification.Name.UITextViewTextDidChange,
+                                               name: UITextView.textDidChangeNotification,
                                                object: self)
     }
     
