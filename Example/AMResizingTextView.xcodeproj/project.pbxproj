@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1C335D3AEE0C2A9F1196F01D /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C43193E1712D3B436B5FF2C /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Tests.framework */; };
+		1DA5E42521656431003E7610 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5E42421656431003E7610 /* Foundation.framework */; };
+		1DA5E42721656438003E7610 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5E42621656438003E7610 /* UIKit.framework */; };
+		1DA5E42821656445003E7610 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5E42421656431003E7610 /* Foundation.framework */; };
+		1DA5E4292165644D003E7610 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5E42621656438003E7610 /* UIKit.framework */; };
 		5B152440C6A4F03B2265F1BE /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6ECBBF6BBFE3748EA517A7 /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -30,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		18A280E0F58169C9E8A56E40 /* Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1DA5E42421656431003E7610 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1DA5E42621656438003E7610 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4EC74D6B2CADC89236C10EBF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* AMResizingTextView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMResizingTextView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DA5E4292165644D003E7610 /* UIKit.framework in Frameworks */,
+				1DA5E42821656445003E7610 /* Foundation.framework in Frameworks */,
 				5B152440C6A4F03B2265F1BE /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DA5E42721656438003E7610 /* UIKit.framework in Frameworks */,
+				1DA5E42521656431003E7610 /* Foundation.framework in Frameworks */,
 				1C335D3AEE0C2A9F1196F01D /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +84,8 @@
 		46259038458B800972021CC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1DA5E42621656438003E7610 /* UIKit.framework */,
+				1DA5E42421656431003E7610 /* Foundation.framework */,
 				7B6ECBBF6BBFE3748EA517A7 /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Example.framework */,
 				8C43193E1712D3B436B5FF2C /* Pods_AMResizingTextView_Abstract_Target_AMResizingTextView_Tests.framework */,
 			);
@@ -174,7 +186,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				DCEC184959CBD7C54A467376 /* [CP] Embed Pods Frameworks */,
-				E391983A71EB022357A17E63 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,7 +205,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				FAC307C0874C3D8DA8415F91 /* [CP] Embed Pods Frameworks */,
-				00491B39EB57512B1F3F22F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,21 +277,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00491B39EB57512B1F3F22F3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Tests/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		13B46FC07DD9D729AED9E217 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,21 +329,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E391983A71EB022357A17E63 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example/Pods-AMResizingTextView_Abstract_Target-AMResizingTextView_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FAC307C0874C3D8DA8415F91 /* [CP] Embed Pods Frameworks */ = {
@@ -425,6 +405,7 @@
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -479,6 +460,7 @@
 		607FACEE1AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
