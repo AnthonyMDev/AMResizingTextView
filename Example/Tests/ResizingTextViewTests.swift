@@ -8,7 +8,6 @@
 
 import UIKit
 import XCTest
-import Nimble
 
 import AMResizingTextView
 

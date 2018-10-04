@@ -9,6 +9,5 @@ abstract_target 'AMResizingTextView_Abstract_Target' do
     end
 
     target 'AMResizingTextView_Tests' do
-        pod 'Nimble', '~> 7.3'
     end
 end
