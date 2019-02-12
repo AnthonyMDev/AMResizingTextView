@@ -14,6 +14,16 @@ open class ResizingTextView: UITextView {
     
     private var heightConstraint: NSLayoutConstraint!
     
+    private var maxHeight: CGFloat?
+    
+    public var resizeForNumberOfLines: Int = 0 {
+        didSet {
+            guard resizeForNumberOfLines > 0 else { return (maxHeight = nil) }
+            let padding = (textContainer.lineFragmentPadding * 2) + textContainerInset.top + textContainerInset.bottom
+            maxHeight = (font!.lineHeight * CGFloat(resizeForNumberOfLines)) + padding
+        }
+    }
+    
     /// This closure will be called before the text view's `height` is changed.
     /// The parameter is the height that the text view will be updated to as a `CGFloat`.
     public var willChangeHeight: ((CGFloat) -> Void)?
@@ -86,12 +96,22 @@ open class ResizingTextView: UITextView {
         NotificationCenter.default.removeObserver(self)
     }
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        didUpdateText(self)
+    }
+    
     /*
      *  MARK: - Auto Resizing
      */
     
     @objc func didUpdateText(_ sender: AnyObject) {
         let newHeight = heightForCurrentText()
+        if let maxHeight = maxHeight, newHeight > maxHeight {
+            isScrollEnabled = true
+            showsVerticalScrollIndicator = true
+            return
+        }
         if newHeight != heightConstraint.constant {
             updateHeightConstraint(newHeight)
         }
@@ -99,16 +119,13 @@ open class ResizingTextView: UITextView {
     
     private func updateHeightConstraint(_ newHeight: CGFloat) {
         willChangeHeight?(newHeight)
-        heightConstraint.constant = newHeight
-        setNeedsLayout()
-        
         UIView.animate(withDuration: resizeDuration,
                        delay: 0,
                        options: .layoutSubviews,
-                       animations: { self.layoutIfNeeded() },
+                       animations: { self.heightConstraint.constant = newHeight },
                        completion: { [weak self] _ in
                         self?.didChangeHeight?(newHeight)
-            })
+        })
     }
     
 }
