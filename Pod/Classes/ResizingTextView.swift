@@ -179,6 +179,7 @@ open class ResizingTextView: UITextView {
         case .infinite: return nil
         }
     }
+    
     private func height(forNumberOfLines numberOfLines: Int) -> CGFloat? {
         guard let font = font else { return nil }
         let padding = contentInset.top + contentInset.bottom + textContainerInset.top + textContainerInset.bottom
