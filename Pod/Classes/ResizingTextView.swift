@@ -26,12 +26,12 @@ open class ResizingTextView: UITextView {
     /// Once the `frame`'s height is below this value,
     /// `showsVerticalScrollIndicator` and `isScrollEnabled` are set back to their previous values.
     ///
-    /// The defualt value is `ResizableHeight.infinite`
+    /// The default value is `ResizableHeight.infinite`
     public var maxResizableHeight: ResizableHeight = .infinite
     
     /// The minimum height that the text view should resize to.
     ///
-    /// The defualt value is `ResizableHeight.numberOfLines(1)`
+    /// The default value is `ResizableHeight.numberOfLines(1)`
     public var minResizableHeight: ResizableHeight = .numberOfLines(1)
     
     /// This closure will be called before the text view's `height` is changed.
@@ -181,9 +181,13 @@ open class ResizingTextView: UITextView {
     }
     
     private func height(forNumberOfLines numberOfLines: Int) -> CGFloat? {
-        guard let font = font else { return nil }
-        let padding = contentInset.top + contentInset.bottom + textContainerInset.top + textContainerInset.bottom
-        return (font.lineHeight * CGFloat(numberOfLines)) + padding
+        if let font = font {
+            let padding = contentInset.top + contentInset.bottom + textContainerInset.top + textContainerInset.bottom
+            return (font.lineHeight * CGFloat(numberOfLines)) + padding
+        } else {
+            NSLog("ResizingTextView failed to calculate the height restriction, `font` cannot be `nil`.")
+            return nil
+        }
     }
     
 }
