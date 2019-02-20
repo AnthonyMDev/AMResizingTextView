@@ -5,6 +5,12 @@ import UIKit
  */
 open class ResizingTextView: UITextView {
     
+    public enum ResizableHeight {
+        case height(CGFloat)
+        case numberOfLines(Int)
+        case infinite
+    }
+    
     /*
      *  MARK: - Instance Properties
      */
@@ -12,17 +18,21 @@ open class ResizingTextView: UITextView {
     /// The duration of the animation while resizing the text view in seconds. Defaults to `0.1`.
     public var resizeDuration: TimeInterval = 0.1
     
-    private var heightConstraint: NSLayoutConstraint!
+    /// The maximum height that the text view should resize to.
+    ///
+    /// Once the `frame`'s height has reached this value,
+    /// `showsVerticalScrollIndicator` and `isScrollEnabled` are set to `true`.
+    ///
+    /// Once the `frame`'s height is below this value,
+    /// `showsVerticalScrollIndicator` and `isScrollEnabled` are set back to their previous values.
+    ///
+    /// The defualt value is `ResizableHeight.infinite`
+    public var maxResizableHeight: ResizableHeight = .infinite
     
-    private var maxHeight: CGFloat?
-    
-    public var resizeForNumberOfLines: Int = 0 {
-        didSet {
-            guard resizeForNumberOfLines > 0 else { return (maxHeight = nil) }
-            let padding = (textContainer.lineFragmentPadding * 2) + textContainerInset.top + textContainerInset.bottom
-            maxHeight = (font!.lineHeight * CGFloat(resizeForNumberOfLines)) + padding
-        }
-    }
+    /// The minimum height that the text view should resize to.
+    ///
+    /// The defualt value is `ResizableHeight.numberOfLines(1)`
+    public var minResizableHeight: ResizableHeight = .numberOfLines(1)
     
     /// This closure will be called before the text view's `height` is changed.
     /// The parameter is the height that the text view will be updated to as a `CGFloat`.
@@ -31,6 +41,32 @@ open class ResizingTextView: UITextView {
     /// This closure will be called after the text view's `height` is changed.
     /// The parameter is the height that the text view was updated to as a `CGFloat`.
     public var didChangeHeight: ((CGFloat) -> Void)?
+    
+    // MARK: Private Properties
+    
+    private var heightConstraint: NSLayoutConstraint!
+    
+    private var initialIsScrollEnabled: Bool = true
+    private var initialShowsVerticalScrollIndicator: Bool = true
+    
+    private var maxHeight: CGFloat? {
+        return calculateHeight(for: maxResizableHeight)
+    }
+    
+    private var minHeight: CGFloat? {
+        return calculateHeight(for: minResizableHeight)
+    }
+    
+    private var isMaxHeight: Bool = false {
+        didSet {
+            if !oldValue {
+                initialIsScrollEnabled = isScrollEnabled
+                initialShowsVerticalScrollIndicator = showsVerticalScrollIndicator
+            }
+            isScrollEnabled = isMaxHeight ? true : initialIsScrollEnabled
+            showsVerticalScrollIndicator = isMaxHeight ? true : initialShowsVerticalScrollIndicator
+        }
+    }
     
     /*
      *  MARK: - Object Lifecycle
@@ -106,12 +142,18 @@ open class ResizingTextView: UITextView {
      */
     
     @objc func didUpdateText(_ sender: AnyObject) {
-        let newHeight = heightForCurrentText()
-        if let maxHeight = maxHeight, newHeight > maxHeight {
-            isScrollEnabled = true
-            showsVerticalScrollIndicator = true
-            return
+        var newHeight = heightForCurrentText()
+        
+        if let maxHeight = maxHeight, newHeight >= maxHeight {
+            newHeight = maxHeight
+            isMaxHeight = true
+        } else {
+            if let minHeight = minHeight, newHeight < minHeight {
+                newHeight = minHeight
+            }
+            isMaxHeight = false
         }
+        
         if newHeight != heightConstraint.constant {
             updateHeightConstraint(newHeight)
         }
@@ -119,13 +161,28 @@ open class ResizingTextView: UITextView {
     
     private func updateHeightConstraint(_ newHeight: CGFloat) {
         willChangeHeight?(newHeight)
-        UIView.animate(withDuration: resizeDuration,
-                       delay: 0,
-                       options: .layoutSubviews,
-                       animations: { self.heightConstraint.constant = newHeight },
-                       completion: { [weak self] _ in
-                        self?.didChangeHeight?(newHeight)
+        UIView.transition(with: self,
+                          duration: resizeDuration,
+                          animations: { [weak self, newHeight] in
+                            self?.heightConstraint.constant = newHeight
+            },
+                          completion: { [weak self, newHeight] _ in
+                            self?.didChangeHeight?(newHeight)
+                            self?.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         })
+    }
+    
+    private func calculateHeight(for resizableHeight: ResizableHeight) -> CGFloat? {
+        switch resizableHeight {
+        case .height(let height): return height
+        case .numberOfLines(let lines): return height(forNumberOfLines: lines)
+        case .infinite: return nil
+        }
+    }
+    private func height(forNumberOfLines numberOfLines: Int) -> CGFloat? {
+        guard let font = font else { return nil }
+        let padding = contentInset.top + contentInset.bottom + textContainerInset.top + textContainerInset.bottom
+        return (font.lineHeight * CGFloat(numberOfLines)) + padding
     }
     
 }
