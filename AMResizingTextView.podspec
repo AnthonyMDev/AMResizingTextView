@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'AMResizingTextView'
-  s.version          = '1.2.0'
+  s.version          = '1.3.0'
   s.swift_version    = '4.2'
   s.summary          = 'A `UITextView` subclass that automatically resizes based on the size of its content text with a smooth animation. Written in Swift'
 
